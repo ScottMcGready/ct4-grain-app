@@ -1,4 +1,11 @@
-<!doctype html>
+<?php
+  // time now
+  $date = new DateTime();
+
+  // game day start + 1 hr
+  $deadline = new DateTime("2021-05-17 14:30:00");
+
+?><!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,9 +31,18 @@
         <div class="imgbox">
         <img src="loading.gif"/>
         </div>
+        <?php
+          if ($date > $deadline) {
+        ?>
+        <h1 class="cover-heading">Processing fault!</h1>
+        <h1 class="cover-heading">Database corrupted</h1>
+        <?php
+          }else{
+        ?>
         <h1 class="cover-heading">Processing grain transactions</h1>
-        <!-- <h1 class="cover-heading text-danger">ERROR: Processing Fault</h1> -->
-        <!-- <h1 class="cover-heading text-danger">Database Corrupted</h1> -->
+        <?php
+          }
+        ?>
       </main>
 
       <footer class="mastfoot mt-auto">
